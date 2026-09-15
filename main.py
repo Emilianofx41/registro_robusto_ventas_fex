@@ -17,7 +17,7 @@ COLOR_EXITO = Fore.GREEN
 COLOR_ERROR = Fore.RED
 COLOR_AVISO = Fore.YELLOW
 
-def registrar_venta():
+def registrar_venta(p_unit=0, cant=0):
     """Solicita los datos de la venta al usuario y calcula el total.
     
     Implementa un bucle de reintento mediante try-except-else-finally para
@@ -31,13 +31,14 @@ def registrar_venta():
     
     try:
         # Entrada y conversión de datos
-        p_unit = float(input(f"{COLOR_MENU}Precio unitario del producto: "))
-        if p_unit < 0:
-            raise ValueError("Precio inválido")
+        if p_unit == 0 and cant == 0:
+            p_unit = float(input(f"{COLOR_MENU}Precio unitario del producto: "))
+            if p_unit < 0:
+                raise ValueError("Precio inválido")
 
-        cant = int(input(f"{COLOR_MENU}La cantidad vendida: "))
-        if cant <= 0:
-            raise ValueError("Cantidad inválida")
+            cant = int(input(f"{COLOR_MENU}La cantidad vendida: "))
+            if cant <= 0:
+                raise ValueError("Cantidad inválida")
 
         # Cálculo de la operación
         total = p_unit * cant
@@ -59,6 +60,7 @@ def registrar_venta():
         # Ejecución garantizada incondicionalmente
         color_resultado = COLOR_EXITO if registro_resultado == "Con éxito" else COLOR_ERROR
         print(f"{color_resultado}Operación Finalizada {registro_resultado}\n")
+    return total    
 
 
 def programa_principal():
