@@ -103,4 +103,5 @@ def programa_principal():
     print(f"{COLOR_TITULO}Programa finalizado. ¡Hasta luego!")
 
 
-programa_principal()
+if __name__ == "__main__":
+    programa_principal()
