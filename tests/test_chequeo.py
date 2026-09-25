@@ -1,4 +1,4 @@
-import main
+import src.main as main
 
 def test_registrar_venta():
     p_unit = 10
